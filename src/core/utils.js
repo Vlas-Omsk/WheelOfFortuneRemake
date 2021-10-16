@@ -4,6 +4,7 @@ export const easingFunctions = Object.freeze({
   // acceleration until halfway, then deceleration
   easeInOutQuart: (t) =>
     t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t,
+  easeOutExpo: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
 });
 
 export function animate(
@@ -41,4 +42,21 @@ export function animate(
 export function randomInteger(min, max) {
   let rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
+}
+
+export function invertScrollHandler(e, maxWidth, element) {
+  if (window.innerWidth < maxWidth) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    e = window.event || e;
+    const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+    if (e.shiftKey) element.scrollBy({ top: -delta * 40 });
+    else element.scrollBy({ left: -delta * 40 });
+  }
+}
+
+export function roundFloat(value, precision) {
+  const tmp = Math.pow(10, precision);
+  return Math.round(value * tmp) / tmp;
 }

@@ -1,10 +1,12 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    :style="`min-width: ${width}px; min-height: ${height}px`"
-    :viewBox="`0 0 ${width} ${height}`"
+    :width="this.width == 'auto' ? null : this.width"
+    :height="this.height == 'auto' ? null : this.height"
+    :style="`min-width: ${
+      width instanceof Number ? width + 'px' : width
+    }; min-height: ${height instanceof Number ? height + 'px' : height}`"
+    :viewBox="viewbox"
     role="presentation"
     v-bind="$attrs"
     v-on="listener"
@@ -22,16 +24,21 @@ export default Vue.extend({
   props: {
     width: {
       type: String,
-      default: "32",
+      default: "auto",
     },
     height: {
       type: String,
-      default: "32",
+      default: "auto",
     },
     color: {
       type: String,
       default: "currentColor",
     },
+  },
+  data() {
+    return {
+      viewbox: "0 0 0 0",
+    };
   },
   computed: {
     listener() {
@@ -39,6 +46,10 @@ export default Vue.extend({
         click: (e) => this.$emit("click", e),
       });
     },
+  },
+  mounted() {
+    const svg = this.$slots.default[0].elm;
+    this.viewbox = svg.getAttribute("viewBox") || svg.getAttribute("viewbox");
   },
 });
 </script>

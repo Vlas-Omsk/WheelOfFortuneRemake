@@ -1,23 +1,29 @@
 <template>
   <div class="app">
     <header class="app__header">
-      <h1 class="app__title">Wheel of fortune</h1>
+      <h1 class="app__title">Sample text</h1>
     </header>
-    <main class="app__main">
-      <ul class="menu">
+    <nav class="menu">
+      <ul class="menu__items">
         <li class="menu__item">
-          <icon-wrapper><icon-wheel /></icon-wrapper>
+          <icon-wrapper width="32"><icon-wheel /></icon-wrapper>
         </li>
       </ul>
-      <wheel class="app__currentPage" />
+    </nav>
+    <main class="app__main">
+      <wheel class="app__content" />
     </main>
+    <overlay />
   </div>
 </template>
 
 <script>
+// кстати да https://csgo500tr.com/
+
 import IconWrapper from "./components/common/IconWrapper.vue";
-import IconWheel from "./components/icons/Wheel.vue";
-import Wheel from "./components/Wheel.vue";
+import IconWheel from "./components/icons/WheelMini.vue";
+import Wheel from "./pages/Wheel.vue";
+import Overlay from "./components/Overlay.vue";
 
 export default {
   name: "App",
@@ -25,6 +31,7 @@ export default {
     IconWrapper,
     IconWheel,
     Wheel,
+    Overlay,
   },
 };
 </script>
@@ -52,11 +59,13 @@ body {
 @import "./assets/vars.scss";
 
 .app {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 80px auto;
+  grid-template-rows: 90px auto;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
   color: $color;
   height: 100vh;
   width: 100%;
@@ -64,36 +73,30 @@ body {
   &__header {
     display: flex;
     align-items: center;
-    height: 90px;
     padding: 0 20px;
+    grid-column: 1 / 3;
     background-color: $backgroundColor2;
-    border-bottom: 1px solid $color2;
+    border-bottom: 1px solid $borderColor;
   }
   &__title {
     font-size: 2em;
     font-weight: bold;
   }
   &__main {
-    display: flex;
-    height: 100%;
-  }
-  &__currentPage {
-    width: 100%;
+    overflow-y: scroll;
   }
 }
 
 .menu {
-  min-width: 80px;
   height: 100%;
   background-color: $backgroundColor2;
-  border-right: 1px solid $color2;
+  border-right: 1px solid $borderColor;
 
   &__item {
     display: flex;
     justify-content: center;
-    width: 100%;
     padding: 20px 0;
-    color: #c8354e;
+    color: $color2;
   }
 }
 </style>
