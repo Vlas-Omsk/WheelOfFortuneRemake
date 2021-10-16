@@ -270,5 +270,7 @@ export function getBetLists() {
 export function newBet(bet, type) {
   bet = roundFloat(bet, 2);
   //betList[type].unshift({ bet, username });
-  onNewBetEventHandlers.forEach((callback) => callback(bet, type, username));
+  onNewBetEventHandlers.forEach((callback) =>
+    callback(type, { bet, username })
+  );
 }

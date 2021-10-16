@@ -6,7 +6,7 @@
         <icon-wrapper height="14" class="betList__bux"
           ><icon-bux
         /></icon-wrapper>
-        {{ getFormattedWager(getSumWager) }} BUX
+        {{ getFormattedWager(getSumWager) }} TZN
       </div>
     </div>
     <div class="list">
@@ -17,7 +17,7 @@
             ><icon-bux
           /></icon-wrapper>
           {{ getFormattedWager(item.bet) }}
-          BUX
+          TZN
         </div>
       </div>
     </div>

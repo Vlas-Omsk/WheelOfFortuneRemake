@@ -3,7 +3,7 @@
     <div class="container__wrapper">
       <div class="container">
         <div class="container__side"></div>
-        <div class="wheel__body">
+        <div class="wheel__body" ref="wheelBody">
           <div
             class="wheel__image"
             :style="{
@@ -179,8 +179,12 @@ export default {
         this.onSpinEnd
       );
     },
-    onNewBet(bet, type, username) {
-      if (!this.isSpinning) this.lists[type].unshift({ bet, username });
+    onNewBet(type, e) {
+      if (!this.isSpinning) this.lists[type].unshift(e);
+    },
+    updateWheelBodyAspectRatio() {
+      this.$refs.wheelBody.style.height =
+        this.$refs.wheelBody.clientWidth + "px";
     },
   },
   created() {
@@ -190,6 +194,14 @@ export default {
     this.types = getBetTypes();
     this.lists = getBetLists();
     onNewBet(this.onNewBet);
+
+    window.addEventListener("resize", this.updateWheelBodyAspectRatio);
+  },
+  mounted() {
+    this.updateWheelBodyAspectRatio();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.updateWheelBodyAspectRatio);
   },
 };
 </script>
@@ -210,7 +222,6 @@ export default {
     justify-content: flex-end;
     width: 100%;
     max-width: 400px;
-    aspect-ratio: 1 / 1;
     overflow: hidden;
   }
   &__image {
