@@ -1,11 +1,9 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :width="this.width == 'auto' ? null : this.width"
-    :height="this.height == 'auto' ? null : this.height"
-    :style="`min-width: ${
-      width instanceof Number ? width + 'px' : width
-    }; min-height: ${height instanceof Number ? height + 'px' : height}`"
+    :width="width == 'auto' ? null : width"
+    :height="height == 'auto' ? null : height"
+    :style="`min-width: ${width + 'px'}; min-height: ${height + 'px'}`"
     :viewBox="viewbox"
     role="presentation"
     v-bind="$attrs"

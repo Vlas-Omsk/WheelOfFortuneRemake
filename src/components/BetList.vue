@@ -6,7 +6,8 @@
         <icon-wrapper height="14" class="betList__bux"
           ><icon-bux
         /></icon-wrapper>
-        {{ getFormattedWager(getSumWager) }} TZN
+        {{ getFormattedWager(list.reduce((prev, cur) => prev + cur.bet, 0)) }}
+        TZN
       </div>
     </div>
     <div class="list">
@@ -25,8 +26,8 @@
 </template>
 
 <script>
-import IconWrapper from "../components/common/IconWrapper.vue";
-import IconBux from "../components/icons/Bux.vue";
+import IconWrapper from "@/components/common/IconWrapper.vue";
+import IconBux from "@/components/icons/Bux.vue";
 
 export default {
   components: {
@@ -47,13 +48,6 @@ export default {
       require: true,
     },
   },
-  computed: {
-    getSumWager() {
-      let wager = 0;
-      for (let item of this.list) wager += item.bet;
-      return wager;
-    },
-  },
   methods: {
     getFormattedWager(wager) {
       return this.isWinned
@@ -65,7 +59,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .betList {
   display: flex;

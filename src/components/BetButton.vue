@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import eventBus from "../core/eventBus.js";
-import NewBetPopup from "./popups/NewBet.vue";
+import eventBus from "@/core/eventBus.js";
+import NewBetPopup from "@/components/popups/NewBet.vue";
 
 export default {
   props: {
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .betButton {
   position: relative;

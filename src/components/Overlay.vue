@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import eventBus from "../core/eventBus.js";
+import eventBus from "@/core/eventBus.js";
 
 export default {
   data() {

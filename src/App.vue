@@ -20,10 +20,10 @@
 <script>
 // кстати да https://csgo500tr.com/
 
-import IconWrapper from "./components/common/IconWrapper.vue";
-import IconWheel from "./components/icons/WheelMini.vue";
-import Wheel from "./pages/Wheel.vue";
-import Overlay from "./components/Overlay.vue";
+import IconWrapper from "@/components/common/IconWrapper.vue";
+import IconWheel from "@/components/icons/WheelMini.vue";
+import Wheel from "@/pages/Wheel.vue";
+import Overlay from "@/components/Overlay.vue";
 
 export default {
   name: "App",
@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./assets/vars.scss";
-@import "./assets/reset.scss";
+@import "@/assets/vars.scss";
+@import "@/assets/reset.scss";
 
 body {
   background-color: $backgroundColor;
@@ -56,7 +56,7 @@ body {
 </style>
 
 <style scoped lang="scss">
-@import "./assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .app {
   display: grid;

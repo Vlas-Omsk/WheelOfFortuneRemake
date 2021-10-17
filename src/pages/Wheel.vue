@@ -100,17 +100,13 @@ import {
   getNextSpin,
   getBetLists,
   onNewBet,
-} from "../core/api.js";
-import {
-  animate,
-  easingFunctions,
-  invertScrollHandler,
-} from "../core/utils.js";
-import IconWrapper from "../components/common/IconWrapper.vue";
-import IconArrow from "../components/icons/Arrow.vue";
-import Button from "../components/common/Button.vue";
-import BetButton from "../components/BetButton.vue";
-import BetList from "../components/BetList.vue";
+} from "@/core/api.js";
+import { animate, easingFunctions, invertScrollHandler } from "@/core/utils.js";
+import IconWrapper from "@/components/common/IconWrapper.vue";
+import IconArrow from "@/components/icons/Arrow.vue";
+import Button from "@/components/common/Button.vue";
+import BetButton from "@/components/BetButton.vue";
+import BetList from "@/components/BetList.vue";
 
 export default {
   components: {
@@ -207,7 +203,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .wheel {
   display: flex;
@@ -258,7 +254,7 @@ export default {
   }
   &__bets {
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: repeat(2, auto);
     column-gap: 24px;
     margin: 0 30px 30px 30px;
   }

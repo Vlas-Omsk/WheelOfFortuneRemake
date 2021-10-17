@@ -1,4 +1,4 @@
-import { randomInteger, roundFloat } from "./utils.js";
+import { randomInteger, roundFloat } from "@/core/utils.js";
 
 const betList = {
   gray: [

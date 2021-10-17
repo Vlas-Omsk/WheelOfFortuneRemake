@@ -5,7 +5,7 @@
 </template>
 
 <style scoped lang="scss">
-@import "../../assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .button {
   background: $buttonBackgroundColor;
@@ -13,7 +13,7 @@
   font-weight: bold;
   padding: 7.5px 12px;
   border-radius: 4px;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: background-color $transition;
 

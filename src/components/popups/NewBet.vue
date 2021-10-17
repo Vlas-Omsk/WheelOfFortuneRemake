@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { newBet } from "../../core/api.js";
-import { roundFloat } from "../../core/utils.js";
-import TextBox from "../common/TextBox.vue";
-import Button from "../common/Button.vue";
+import { newBet } from "@/core/api.js";
+import { roundFloat } from "@/core/utils.js";
+import TextBox from "@/components/common/TextBox.vue";
+import Button from "@/components/common/Button.vue";
 
 export default {
   props: {
@@ -49,7 +49,7 @@ export default {
     newBet,
     parseAmount() {
       const value = Number.parseFloat(this.amount);
-      if (Number.isNaN(value)) this.amount = 0;
+      if (isNaN(value)) this.amount = 0;
       else this.amount = roundFloat(value, 2);
     },
     set(value) {
@@ -69,12 +69,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/vars.scss";
+@import "@/assets/vars.scss";
 
 .newbet {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 35px 35px;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: repeat(3, 1fr) 35px 35px;
+  grid-template-rows: repeat(3, auto);
   gap: 10px;
   width: 100%;
   max-width: 400px;
@@ -87,7 +87,7 @@ export default {
   }
   &__container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-column: 1 / -1;
     column-gap: 10px;
     margin-top: 16px;
