@@ -1,6 +1,6 @@
 <template>
   <button
-    role="button"
+    type="button"
     class="betButton"
     :style="{ '--color': type.color }"
     @click="click"
